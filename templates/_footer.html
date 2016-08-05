@@ -1,41 +1,54 @@
+<!-- section text on background image -->
 <footer>
-    <div class="container-fluid scifabric">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-offset-4 col-sm-4 col-md-offset-0 col-md-4 "> 
-                    <p>Powered by</p>
-                    <a href="http://pybossa.com/?utm_source=PYBOSSA%20new%20server&utm_medium=server&utm_campaign=PYBOSSA%20new%20server"><img alt="SciFabric Logo" class="logo_horiz" src="{{ url_for('static', filename='img/pybossa.svg')}}"></a>
-                </div>
-                <div class="col-sm-offset-2 col-sm-4 col-md-offset-0 col-md-2 col-lg-2">
-
-                    <p><strong>{{ _('Resources') }}</strong></p>
-                    <p><a href="http://docs.pybossa.com">{{ _('Docs') }}</a></p>
-                    <p><a href="{{url_for('help.api')}}">API</a></p>
-                    <p><a href="{{url_for('help.tos')}}">{{ _('Terms of Use') }}</a></p>
-                    <p><a href="{{url_for('help.cookies_policy')}}">{{ _('Cookies Policy') }}</a></p>
-                    <p><a href="{{url_for('help.privacy')}}">{{ _('Privacy Policy') }}</a></p>
-                    <p><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></p>
-                    <p><a href="{{url_for('stats.index')}}">{{ _('Stats') }}</a></p>
-
-                </div>
-
-                <div class="col-sm-4 col-md-2 col-lg-2">
-
-                    <p><strong>{{_('Licenses')}}</strong></p>
-                    <p><a href="{{url_for('help.license')}}">{{ _('Overview') }}</a></p>
-                    <p><a href="{{url_for('help.license', _anchor='projects')}}">{{ _('Projects') }}</a></p>
-                    <p><a href="{{url_for('help.license', _anchor='data')}}">{{ _('Data') }}</a></p>
-                    <p><a href="{{url_for('help.license', _anchor='content')}}">{{ _('Content') }}</a></p>
-
-                </div>
-
-                <div class="col-sm-offset-2 col-sm-4 col-md-offset-0 col-md-2 col-lg-2">
-                    <p><strong>{{_('Social')}}</strong></p>
-                    <p><a href="https://www.facebook.com/PyBossa/">Facebook</a></p>
-                    <p><a href="http://twitter.com/PyBossa/">Twitter</a></p>
-                </div>
-            </div>
-        </div>
-    </div> 
+  <div class="container-fluid text-center">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="h-centered-items">
+          <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdecoders.amnesty.org" class="facebook customer share">
+                <i class="fa fa-facebook-square fa-2x"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/intent/tweet?text=Join%20hundreds%20of%20digital%20volunteers%20helping%20us%20expose%20human%20rights%20violations%20%20https%3A%2F%2Fdecoders.amnesty.org" class="twitter customer share"><i class="fa fa-twitter fa-2x"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="h5 share-message">Please share and help recruit your friends</p>
+        <ul class="h-centered-items links">
+          <li>
+            <a href="/terms/">Terms of Use</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="/glossary/">Glossary</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a target="_blank" href="https://www.amnesty.org/en/about-us/cookie-statement/">Cookies Policy</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a target="_blank" href="https://www.amnesty.org/en/">amnesty.org</a>
+          </li>
+      </div>
+    </div>
+  </div>
 </footer>
 
+<!-- feedback link -->
+<div class="col-xs-12 feedback">
+    <a class="feedback-link" href="https://e-activist.com/ea-action/action?ea.client.id=1924&ea.campaign.id=52252">
+    <img class="img-responsive" src="/static/img/lightbulb_icon.png"/>
+    </a>
+</div>
+
+<!-- cookies section -->
+<div class="cookies" style="display:none">
+  <div class="cookies-container clearfix">
+    <p class="cookies-message">Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a href="https://www.amnesty.org/en/about-us/cookie-statement/" target="_blank">Learn more.</a></p>
+    <form action="/cookiemessage/hide" class="cookies-form" method="POST">
+      <input type="submit" class="btn btn-default" id="accept-cookies" value="Okay, got it">
+    </form>
+  </div>
+</div>

@@ -1,39 +1,52 @@
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url_for('home.home') }}"><img src="{{url_for('static',filename='img/' + logo)}}" alt="{{brand}}"></a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                {{_('Menu')}}
-            </button>
+<nav class="navbar navbar-default">
+  <div class="container-fluid" id="header-container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-container" aria-expanded="false">
+        <div id="navbar-hamburger">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav">
-                <li {% if active_page == 'community' %} class="active" {% endif %}><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
-                <li {% if active_page == 'projects' %} class="active" {% endif %}><a href="{{ url_for('project.index') }}">{{ _('Projects') }}</a></li>
-                <li {% if active_page == 'create' %} class="active" {% endif %}><a href="{{ url_for('project.new') }}">{{ _('Create') }}</a></li>
-                <li {% if active_page == 'about' %} class="active" {% endif %}><a href="{{ url_for('home.about')}}">{{ _('About') }}</a></li>
-            </ul>
-            {% include '_gcs_form.html' ignore missing %}
-            <ul class="nav navbar-nav navbar-right">
-            {% if current_user.is_authenticated() %}
-                <li {% if active_page == 'profile' %} class="active" {% endif %}><a href="#" data-toggle="dropdown" class="dropdown-toggle"> {{ current_user.name | truncate(15,true) }} <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{ url_for('account.profile', name=current_user.name) }}"> {{ _('My Profile') }}</a></li>
-                    <li><a href="{{ url_for('account.projects', name=current_user.name) }}"> {{ _('My Projects') }}</a></li>
-                    <li><a href="{{ url_for('account.update_profile', name=current_user.name) }}"> {{ _('My Settings') }}</a></li>
-                    {% if current_user.admin == 1 %}
-                    <li class="divider"></li>
-                    <li><a href="{{ url_for('admin.index') }}">{% if notify_admin %} <span class="label label-info ">{{ news |count }}</span>{% else %}{% endif %} {{ _('Admin Site') }}</a></li>
-                    {% endif %}
-                    <li class="divider"></li>
-                    <li><a href="{{ url_for('account.signout') }}"> {{ _('Sign Out') }}</a></li>
-                </ul>
-                </li>
-            {% else %}
-                <li><a href="{{ url_for('account.signin') }}"> {{ _('Sign in') }}</a></li>
-
+        <div id="navbar-close" class="hidden">
+        </div>
+      </button>
+      <a class="navbar-brand main-logo" href="#">
+        <img alt="Amnesty Decoders" src="/static/img/amnesty-main-logo.png"/>
+      </a>
+      <a class="navbar-brand small-logo" href="#">
+        <img alt="Amnesty Decoders" src="/static/img/amnesty-small-logo.png"/>
+      </a>
+    </div>        
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="menu-container">
+      <ul class="nav navbar-nav navbar-right" id="menu">
+        {% if current_user.is_authenticated() %}
+            <li><a href="{{ url_for('account.profile', name=current_user.name) }}">{{
+                _('Account') }}</a></li>
+            {% if current_user.admin %}
+            <li><a href="{{ url_for('admin.index')}}">{{ _('Admin') }}</a></li>
+            <li><a href="{{ url_for('account.index')}}">{{ _('Community') }}</a></li>
             {% endif %}
-            </ul>
-        </div>
-    </div>
-</div>
+            <li><a href="{{ url_for('account.signout') }}">Sign Out</a></li>
+        {% else %}
+            <li><a href="{{ url_for('account.signin') }}?next={{ request.path }}" >{{ _('Sign in') }}</a></li>
+        {% endif %}
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<section class="section-text-on-bg-image" id="intro">
+  <div class="text-content">
+    <div class="text-content-v-center" style="height:20vh">
+      <div class="text-content-v-center-cell">
+        <p class="lead">
+          Join hundreds of digital volunteers helping us expose human rights violations, one click at a time.
+        </p>            
+      </div>
+    </div> 
+  </div>    
+</section>
